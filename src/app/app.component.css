@@ -23,6 +23,10 @@ main {
     text-align: center;
 }
 
+li{
+    padding: 10px 0px;
+}
+
 @media (min-width: 768px) {
     main {
         margin: 4rem auto;

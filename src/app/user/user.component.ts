@@ -15,7 +15,12 @@ export class UserComponent {
   
 // selectUser = DUMMY_USERS[randomIndex];
 
-@Input avatar
+@Input({required:true}) avatar!: string;
+@Input({required:true}) name!: string;
+
+get imagePath(){
+  return 'public/' + this.avatar
+}
 
 onSelectUser(){
   // const randomIndex = Math.floor(Math.random()* DUMMY_USERS.length);
