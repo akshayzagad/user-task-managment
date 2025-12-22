@@ -1,4 +1,4 @@
-import { Component, computed, input, Input } from '@angular/core';
+import { Component, computed, EventEmitter, input, Input, Output } from '@angular/core';
 import { DUMMY_USERS } from '../dummy-users';
 
 
@@ -15,22 +15,27 @@ export class UserComponent {
   
 // selectUser = DUMMY_USERS[randomIndex];
 
-// @Input({required:true}) avatar!: string;
-// @Input({required:true}) name!: string;
+/** Traditional Input decorator to get value form parent */
+@Input({required:true}) id!: string;
+@Input({required:true}) avatar!: string;
+@Input({required:true}) name!: string;
+@Output() select = new EventEmitter();
 
-avatar = input.required<string>();
-name = input.required<string>();
-
-imagePath = computed(()=>{
-  return 'public/' + this.avatar()
-})
-
-// get imagePath(){
-//   return 'public/' + this.avatar
-// }
+get imagePath(){
+  return 'public/' + this.avatar
+}
 
 onSelectUser(){
   // const randomIndex = Math.floor(Math.random()* DUMMY_USERS.length);
   // this.selectUser = DUMMY_USERS[randomIndex];
+  this.select.emit(this.id)
 }
+
+/** new Input signal to get value form parent */
+// avatar = input.required<string>();
+// name = input.required<string>();
+
+// imagePath = computed(()=>{
+//   return 'public/' + this.avatar()
+// })
 }
