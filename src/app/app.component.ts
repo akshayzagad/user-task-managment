@@ -14,7 +14,7 @@ import { TaskComponent } from "./task/task.component";
 export class AppComponent {
   title = 'my-first-app';
   user = DUMMY_USERS;
-  task = DUMMY_USERS;
+  task = dummyTasks;
 
   /** create property to store id which is emit bu user component and it temprary initilize */
   selectedId = "u1";

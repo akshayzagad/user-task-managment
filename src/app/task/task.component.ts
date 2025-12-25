@@ -8,4 +8,9 @@ import { Component, Input } from '@angular/core';
 })
 export class TaskComponent {
 @Input({required:true}) name! : string; 
+@Input({required:true}) avatar!: string;
+
+get imagePath(){
+  return 'public/' + this.avatar
+}
 }
