@@ -11,6 +11,9 @@ import { DUMMY_USERS } from '../dummy-users';
 
 // const randomIndex = Math.floor(Math.random()* DUMMY_USERS.length);
 
+/** Here is user object which is come from app component we declare here as a type to use as input on line 33 */
+type User = { id: string; avatar: string; name: string };
+
 @Component({
   selector: 'app-user',
   imports: [],
@@ -27,11 +30,7 @@ export class UserComponent {
 
   /** Using seprate varible use an whole object */
 
-  @Input({ required: true }) user!: {
-    id: string;
-    avatar: string;
-    name: string;
-  };
+  @Input({ required: true }) user!: User;
 
   @Output() select = new EventEmitter();
 
