@@ -1,32 +1,20 @@
 <app-header></app-header>
 <main>
   <ul id="user" style="list-style: none">
+    @for(users of user;track users.id){
     <li>
-      <app-user
-        [user]="user[0]"
-        (select)="onSelectUser($event)"
-      />
+      <app-user [user]="users" (select)="onSelectUser($event)" />
     </li>
-    <li>
-      <app-user
-        [user]="user[1]"
-        (select)="onSelectUser($event)"
-      />
-    </li>
-    <li>
-      <app-user
-        [user]="user[2]"
-        (select)="onSelectUser($event)"
-      />
-    </li>
-    <li>
-      <app-user
-        [user]="user[3]"
-        (select)="onSelectUser($event)"
-      />
-    </li>
+    }
   </ul>
-  <app-task [name]="SelectedUser.name" [avatar]="SelectedUser.avatar"></app-task>
+  @if(SelectedUser){
+  <app-task
+    [name]="SelectedUser.name"
+    [avatar]="SelectedUser.avatar"
+  ></app-task>
+  }@else {
+    <p id="fallback">Please select the user</p>
+  }
 </main>
 
 <router-outlet />

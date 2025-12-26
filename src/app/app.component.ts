@@ -18,7 +18,7 @@ export class AppComponent {
   task = dummyTasks;
 
   /** create property to store id which is emit bu user component and it temprary initilize */
-  selectedId = "u1";
+  selectedId ?: string;
 
   get SelectedUser(){
     return this.user.find((user)=>user.id === this.selectedId)!;
