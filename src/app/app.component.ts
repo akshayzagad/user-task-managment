@@ -3,12 +3,9 @@ import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { UserComponent } from './user/user.component';
 import { DUMMY_USERS } from './dummy-users';
-import { TaskComponent } from './task/task.component';
-import { dummyTasks } from './dummy-tasks';
-import {
-  NgForOf,
-  NgIf,
-} from '../../node_modules/@angular/common/common_module.d-NEF7UaHr';
+import { TasksComponent } from './tasks/tasks.component';
+import { NgFor, NgIf } from '@angular/common';
+
 
 @Component({
   selector: 'app-root',
@@ -16,8 +13,8 @@ import {
     RouterOutlet,
     HeaderComponent,
     UserComponent,
-    TaskComponent,
-    NgForOf,
+    TasksComponent,
+    NgFor,
     NgIf,
   ],
   templateUrl: './app.component.html',
@@ -26,7 +23,6 @@ import {
 export class AppComponent {
   title = 'my-first-app';
   user = DUMMY_USERS;
-  task = dummyTasks;
 
   /** create property to store id which is emit bu user component and it temprary initilize */
   selectedId?: string;
