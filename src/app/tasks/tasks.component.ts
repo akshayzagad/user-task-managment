@@ -19,6 +19,10 @@ export class TasksComponent {
     return this.task.filter(task => task.userId === this.userId)!;
   }
 
+  onCompleteTask(id:string){
+    this.task = this.task.filter((tasks)=> tasks.id !== id);
+  }
+
   get imagePath() {
     return 'public/' + this.avatar;
   }

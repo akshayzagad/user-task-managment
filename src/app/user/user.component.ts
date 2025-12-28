@@ -31,8 +31,9 @@ export class UserComponent {
   /** Using seprate varible use an whole object */
 
   @Input({ required: true }) user!: User;
-
-  @Output() select = new EventEmitter();
+  @Input({ required: true }) selected!: boolean;
+  @Output()
+  select = new EventEmitter();
 
   // select = output<string>();
 

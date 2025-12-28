@@ -1,6 +1,5 @@
-import { Component, Input } from '@angular/core';
-import {type Tasks} from './task.modal'
-
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { type Tasks } from './task.modal';
 
 @Component({
   selector: 'app-task',
@@ -10,4 +9,9 @@ import {type Tasks} from './task.modal'
 })
 export class TaskComponent {
   @Input({ required: true }) task!: Tasks;
+  @Output() complete = new EventEmitter<string>();
+
+  onCompleteTask(){
+    this.complete.emit(this.task.id)
+  }
 }
