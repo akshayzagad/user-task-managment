@@ -5,6 +5,7 @@ import { TaskComponent } from './task/task.component';
 import { dummyTasks } from '../dummy-tasks';
 import { NewTaskComponent } from './new-task/new-task.component';
 import { type addTaskData } from './task/task.modal';
+import { serviceTask } from './tasks.service';
 
 @Component({
   selector: 'app-tasks',
@@ -21,8 +22,20 @@ export class TasksComponent {
 
   isAddTaskClick = false;
 
+  /**
+   *  private taskService = new serviceTask(); 
+   * Here we use dependency injection 
+     because when we create task service component to store all logic of tasks 
+     component and here in class use its intance but when this service class 
+     use in another component it also create its instance so that why we use dependency injection
+     like below now we use only one intace of taskservice class
+   * @param taskService 
+   */
+
+  constructor(private taskService: serviceTask) { }
+
   get selectedTasks() {
-    return this.task.filter((task) => task.userId === this.userId)!;
+    return this.taskService.getUserTasks(this.userId);
   }
 
   onCompleteTask(id: string) {
@@ -30,13 +43,13 @@ export class TasksComponent {
   }
 
   onSubmitTask(taskData: addTaskData) {
-    this.task.push(
-     { id:new Date().getTime().toString(),
-      userId:this.userId,
-      title:taskData.title,
-      dueDate:taskData.date,
-      summary:taskData.summary}
-    )
+    this.task.push({
+      id: new Date().getTime().toString(),
+      userId: this.userId,
+      title: taskData.title,
+      dueDate: taskData.date,
+      summary: taskData.summary,
+    });
     this.isAddTaskClick = false;
   }
 

@@ -1,7 +1,8 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
 
 import { FormsModule } from '@angular/forms';
 import { type addTaskData } from '../task/task.modal';
+import { serviceTask } from '../tasks.service';
 
 @Component({
   selector: 'app-new-task',
@@ -16,6 +17,8 @@ export class NewTaskComponent {
   title = '';
   summary = '';
   date = '';
+
+  private tasksService = inject(serviceTask)
 
   onClose() {
     this.close.emit();
