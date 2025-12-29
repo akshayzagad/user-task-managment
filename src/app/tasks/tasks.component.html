@@ -10,7 +10,7 @@
   </header>
   <ul>
     <li *ngFor="let tasks of selectedTasks">
-      <app-task [task]="tasks" (complete)="onCompleteTask($event)"/>
+      <app-task [task]="tasks" />
     </li>
   </ul>
 </section>
