@@ -18,7 +18,7 @@ export class TasksComponent {
   @Input({ required: true }) avatar!: string;
   @Input({ required: true }) userId!: string;
 
-  task = dummyTasks;
+
 
   isAddTaskClick = false;
 
@@ -39,25 +39,25 @@ export class TasksComponent {
   }
 
   onCompleteTask(id: string) {
-    this.task = this.task.filter((tasks) => tasks.id !== id);
+   this.taskService.removeTask(id)
   }
 
-  onSubmitTask(taskData: addTaskData) {
-    this.task.push({
-      id: new Date().getTime().toString(),
-      userId: this.userId,
-      title: taskData.title,
-      dueDate: taskData.date,
-      summary: taskData.summary,
-    });
-    this.isAddTaskClick = false;
-  }
+  // onSubmitTask(taskData: addTaskData) {
+  //   this.task.push({
+  //     id: new Date().getTime().toString(),
+  //     userId: this.userId,
+  //     title: taskData.title,
+  //     dueDate: taskData.date,
+  //     summary: taskData.summary,
+  //   });
+  //   this.isAddTaskClick = false;
+  // }
 
-  onClickAddask() {
+  onClickAddTask() {
     this.isAddTaskClick = true;
   }
 
-  onCloseAddask() {
+  onCloseAddTask() {
     this.isAddTaskClick = false;
   }
 
