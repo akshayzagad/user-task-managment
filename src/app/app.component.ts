@@ -9,14 +9,15 @@ import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [
-    RouterOutlet,
-    HeaderComponent,
-    UserComponent,
-    TasksComponent,
-    NgFor,
-    NgIf,
-  ],
+  standalone:false,
+  // imports: [
+  //   RouterOutlet,
+  //   HeaderComponent,
+  //   UserComponent,
+  //   TasksComponent,
+  //   NgFor,
+  //   NgIf,
+  // ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
