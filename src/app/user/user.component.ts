@@ -1,36 +1,58 @@
-import { Component, computed, input, Input } from '@angular/core';
+import {
+  Component,
+  computed,
+  EventEmitter,
+  input,
+  Input,
+  output,
+  Output,
+} from '@angular/core';
 import { DUMMY_USERS } from '../dummy-users';
-
+import { CardComponent } from "../shared/card/card.component";
 
 // const randomIndex = Math.floor(Math.random()* DUMMY_USERS.length);
 
+/** Here is user object which is come from app component we declare here as a type to use as input on line 33 */
+type User = { id: string; avatar: string; name: string };
+
 @Component({
   selector: 'app-user',
-  imports: [],
+  standalone:false,
   templateUrl: './user.component.html',
-  styleUrl: './user.component.css'
+  styleUrl: './user.component.css',
 })
-
 export class UserComponent {
-  
-// selectUser = DUMMY_USERS[randomIndex];
+  // selectUser = DUMMY_USERS[randomIndex];
 
-// @Input({required:true}) avatar!: string;
-// @Input({required:true}) name!: string;
+  /** Traditional Input decorator to get value form parent */
+  // @Input({required:true}) id!: string;
+  // @Input({required:true}) avatar!: string;
+  // @Input({required:true}) name!: string;
 
-avatar = input.required<string>();
-name = input.required<string>();
+  /** Using seprate varible use an whole object */
 
-imagePath = computed(()=>{
-  return 'public/' + this.avatar()
-})
+  @Input({ required: true }) user!: User;
+  @Input({ required: true }) selected!: boolean;
+  @Output()
+  select = new EventEmitter();
 
-// get imagePath(){
-//   return 'public/' + this.avatar
-// }
+  // select = output<string>();
 
-onSelectUser(){
-  // const randomIndex = Math.floor(Math.random()* DUMMY_USERS.length);
-  // this.selectUser = DUMMY_USERS[randomIndex];
-}
+  get imagePath() {
+    return 'public/' + this.user.avatar;
+  }
+
+  onSelectUser() {
+    // const randomIndex = Math.floor(Math.random()* DUMMY_USERS.length);
+    // this.selectUser = DUMMY_USERS[randomIndex];
+    this.select.emit(this.user.id);
+  }
+
+  /** new Input signal to get value form parent */
+  // avatar = input.required<string>();
+  // name = input.required<string>();
+
+  // imagePath = computed(()=>{
+  //   return 'public/' + this.avatar()
+  // })
 }
