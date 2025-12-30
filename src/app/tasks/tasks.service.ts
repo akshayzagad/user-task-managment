@@ -30,7 +30,7 @@ export class serviceTask {
   ];
 
   getUserTasks(userId: string) {
-   return  this.task.filter((tasks) => tasks.userId === userId);
+   return this.task.filter((tasks) => tasks.userId === userId);
   }
 
   addTask(taskData: addTaskData, userId: string) {
