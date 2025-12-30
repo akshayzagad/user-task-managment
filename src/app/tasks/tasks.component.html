@@ -1,6 +1,6 @@
 <section id="tasks">
   @if (isAddTaskClick) {
-    <app-new-task [userId]="userId" (close)="onCloseAddTask()" ></app-new-task>
+  <app-new-task [userId]="userId" (close)="onCloseAddTask()"></app-new-task>
   }
   <header>
     <h2>{{ name }}'s task</h2>
@@ -14,3 +14,4 @@
     </li>
   </ul>
 </section>
+

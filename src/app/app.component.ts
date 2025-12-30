@@ -35,4 +35,5 @@ export class AppComponent {
     // console.log(`Selected user with id` + id);
     this.selectedId = id;
   }
+  // mongodb+srv://AkshayZagade:AkshayZagade1997@cluster0.7oixm2m.mongodb.net/
 }

@@ -38,21 +38,6 @@ export class TasksComponent {
     return this.taskService.getUserTasks(this.userId);
   }
 
-  onCompleteTask(id: string) {
-   this.taskService.removeTask(id)
-  }
-
-  // onSubmitTask(taskData: addTaskData) {
-  //   this.task.push({
-  //     id: new Date().getTime().toString(),
-  //     userId: this.userId,
-  //     title: taskData.title,
-  //     dueDate: taskData.date,
-  //     summary: taskData.summary,
-  //   });
-  //   this.isAddTaskClick = false;
-  // }
-
   onClickAddTask() {
     this.isAddTaskClick = true;
   }
