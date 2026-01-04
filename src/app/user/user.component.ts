@@ -9,50 +9,31 @@ import {
 } from '@angular/core';
 import { DUMMY_USERS } from '../dummy-users';
 import { CardComponent } from "../shared/card/card.component";
+import { CommonModule } from '@angular/common';
+import { UsersComponent } from './users/users.component';
 
 // const randomIndex = Math.floor(Math.random()* DUMMY_USERS.length);
 
-/** Here is user object which is come from app component we declare here as a type to use as input on line 33 */
-type User = { id: string; avatar: string; name: string };
-
 @Component({
   selector: 'app-user',
-  imports: [CardComponent],
+  imports: [CardComponent, CommonModule, UsersComponent],
   templateUrl: './user.component.html',
   styleUrl: './user.component.css',
 })
 export class UserComponent {
-  // selectUser = DUMMY_USERS[randomIndex];
+ 
 
-  /** Traditional Input decorator to get value form parent */
-  // @Input({required:true}) id!: string;
-  // @Input({required:true}) avatar!: string;
-  // @Input({required:true}) name!: string;
+  user = DUMMY_USERS;
 
-  /** Using seprate varible use an whole object */
+  /** create property to store id which is emit bu user component and it temprary initilize */
+  selectedId?: string;
 
-  @Input({ required: true }) user!: User;
-  @Input({ required: true }) selected!: boolean;
-  @Output()
-  select = new EventEmitter();
-
-  // select = output<string>();
-
-  get imagePath() {
-    return 'public/' + this.user.avatar;
+  get SelectedUser() {
+    return this.user.find((user) => user.id === this.selectedId)!;
   }
 
-  onSelectUser() {
-    // const randomIndex = Math.floor(Math.random()* DUMMY_USERS.length);
-    // this.selectUser = DUMMY_USERS[randomIndex];
-    this.select.emit(this.user.id);
+  onSelectUser(id: string) {
+    // console.log(`Selected user with id` + id);
+    this.selectedId = id;
   }
-
-  /** new Input signal to get value form parent */
-  // avatar = input.required<string>();
-  // name = input.required<string>();
-
-  // imagePath = computed(()=>{
-  //   return 'public/' + this.avatar()
-  // })
 }

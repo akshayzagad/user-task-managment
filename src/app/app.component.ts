@@ -22,18 +22,6 @@ import { NgFor, NgIf } from '@angular/common';
 })
 export class AppComponent {
   title = 'my-first-app';
-  user = DUMMY_USERS;
-
-  /** create property to store id which is emit bu user component and it temprary initilize */
-  selectedId?: string;
-
-  get SelectedUser() {
-    return this.user.find((user) => user.id === this.selectedId)!;
-  }
-
-  onSelectUser(id: string) {
-    // console.log(`Selected user with id` + id);
-    this.selectedId = id;
-  }
+  
   // mongodb+srv://AkshayZagade:AkshayZagade1997@cluster0.7oixm2m.mongodb.net/
 }

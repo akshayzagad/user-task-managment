@@ -37,6 +37,7 @@ export class TasksComponent {
   get selectedTasks() {
     return this.taskService.getUserTasks(this.userId);
   }
+  
 
   onClickAddTask() {
     this.isAddTaskClick = true;

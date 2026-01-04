@@ -1,6 +1,14 @@
-<app-card>
+<!-- <app-card>
   <button [class.active]="selected" (click)="onSelectUser()">
     <img [src]="user.avatar" [alt]="user.name" />
     <span>{{ user.name }}</span>
   </button>
-</app-card>
+</app-card> -->
+
+<ul id="user" style="list-style: none">
+    <!-- @for(users of user;track users.id){ -->
+    <li *ngFor="let users of user">
+      <app-users [selected]="users.id === selectedId" [user]="users" (select)="onSelectUser($event)" />
+    </li>
+    <!-- } -->
+  </ul>

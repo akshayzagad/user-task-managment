@@ -1,0 +1,31 @@
+.user-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  width: 100%;
+  background-color: #9260be;   /* 👈 THIS IS THE BOX COLOR */
+  color: #150722;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+/* Active route */
+.user-link.selected {
+  background-color: #433352;
+  color: #c3b3d1;
+}
+
+.user-link.selected:hover {
+  background-color: #9965dd;
+  color: #150722;
+}
+img {
+  width: 2rem;
+  border-radius: 50%;
+  object-fit: contain;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+}
+span {
+  font-size: 0.8rem;
+}
