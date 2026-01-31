@@ -6,9 +6,13 @@
 </app-card> -->
 
 <ul id="user" style="list-style: none">
-    <!-- @for(users of user;track users.id){ -->
-    <li *ngFor="let users of user">
-      <app-users [selected]="users.id === selectedId" [user]="users" (select)="onSelectUser($event)" />
-    </li>
-    <!-- } -->
-  </ul>
+  <!-- @for(users of user;track users.id){ -->
+  <li *ngFor="let users of users">
+    <app-users
+      [selected]="users.id === selectedId"
+      [user]="users"
+      (select)="onSelectUser($event)"
+    />
+  </li>
+  <!-- } -->
+</ul>

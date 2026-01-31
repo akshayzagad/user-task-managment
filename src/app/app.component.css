@@ -28,6 +28,7 @@ li{
 
     #users {
         flex-direction: column;
+        overflow-y: auto;
     }
 
     #fallback {

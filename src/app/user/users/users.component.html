@@ -1,8 +1,13 @@
 <app-card>
-  <a    class="user-link" [routerLink]="['/users',user.id]" routerLinkActive="selected"  [routerLinkActiveOptions]="{ exact: true }">
+  <a
+    class="user-link"
+    [routerLink]="['/users', user.id,'tasks']"
+    routerLinkActive="selected"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >
     <!-- <button [class.active]="selected" (click)="onSelectUser()"> -->
-      <img [src]="user.avatar" [alt]="user.name" />
-      <span>{{ user.name }}</span>
+    <img [src]="user.avatar" [alt]="user.name" />
+    <span>{{ user.name }}</span>
     <!-- </button> -->
   </a>
 </app-card>

@@ -1,5 +1,5 @@
 <section id="tasks">
-  @if (isAddTaskClick) {
+  <!-- @if (isAddTaskClick) {
   <app-new-task [userId]="userId" (close)="onCloseAddTask()"></app-new-task>
   }
   <header>
@@ -12,6 +12,18 @@
     <li *ngFor="let tasks of selectedTasks">
       <app-task [task]="tasks" />
     </li>
+  </ul> -->
+  @if (selectedTasks.length > 0) {
+  <ul>
+    @for (task of selectedTasks; track task.id) {
+      <li>
+        <app-task [task]="task" />
+      </li>
+    }
   </ul>
+} @else {
+  <p class="no-task">There are no tasks for this user.</p>
+}
+
 </section>
 

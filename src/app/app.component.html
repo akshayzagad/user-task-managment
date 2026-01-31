@@ -1,6 +1,6 @@
 <app-header></app-header>
 <main>
-  <app-user/>
+  
   <!-- @if(SelectedUser){ -->
   <!-- <app-tasks
     *ngIf="SelectedUser; else fallback"
@@ -13,6 +13,12 @@
     <!-- <p id="fallback">Please select the user</p> -->
     <!-- } -->
   <!-- </ng-template> -->
-<router-outlet />
+<section id="users">
+    <app-user></app-user>
+  </section>
+
+  <section id="tasks">
+    <router-outlet></router-outlet>
+  </section>
 </main>
 

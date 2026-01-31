@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, DestroyRef, inject, Input, OnInit } from '@angular/core';
 import { NgFor } from '@angular/common';
 
 import { TaskComponent } from './task/task.component';
@@ -6,6 +6,8 @@ import { dummyTasks } from '../dummy-tasks';
 import { NewTaskComponent } from './new-task/new-task.component';
 import { type addTaskData } from './task/task.modal';
 import { serviceTask } from './tasks.service';
+import { ActivatedRoute } from '@angular/router';
+import { serviceUsers } from '../user/users.service';
 
 @Component({
   selector: 'app-tasks',
@@ -13,12 +15,27 @@ import { serviceTask } from './tasks.service';
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.css',
 })
-export class TasksComponent {
+export class TasksComponent implements OnInit {
   @Input({ required: true }) name!: string;
   @Input({ required: true }) avatar!: string;
   @Input({ required: true }) userId!: string;
 
+   userTasks: any[] = [];
 
+  private activatedRoute = inject(ActivatedRoute);
+  private destroyRef = inject(DestroyRef);
+
+    constructor(private taskService: serviceTask) {}
+
+  ngOnInit(): void {
+    const subscription = this.activatedRoute.paramMap.subscribe({
+      next: (paramMap) => {
+        this.userId = paramMap.get('userId') ?? '';
+        this.userTasks = this.taskService.getUserTasks(this.userId);
+      },
+    });
+    this.destroyRef.onDestroy(() => subscription.unsubscribe());
+  }
 
   isAddTaskClick = false;
 
@@ -32,12 +49,11 @@ export class TasksComponent {
    * @param taskService 
    */
 
-  constructor(private taskService: serviceTask) { }
+
 
   get selectedTasks() {
     return this.taskService.getUserTasks(this.userId);
   }
-  
 
   onClickAddTask() {
     this.isAddTaskClick = true;

@@ -12,11 +12,11 @@ import { NewTaskComponent } from '../../tasks/new-task/new-task.component';
 import { TaskComponent } from '../../tasks/task/task.component';
 import { CommonModule } from '@angular/common';
 import { serviceUsers } from '../users.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterOutlet, RouterLinkWithHref } from '@angular/router';
 
 @Component({
   selector: 'app-users-tasks',
-  imports: [NewTaskComponent, TaskComponent, CommonModule],
+  imports: [NewTaskComponent, TaskComponent, CommonModule, RouterOutlet, RouterLinkWithHref],
   templateUrl: './users-tasks.component.html',
   styleUrl: './users-tasks.component.css',
 })
@@ -52,7 +52,7 @@ export class UsersTasksComponent implements OnInit {
       next: (paramMap) => {
         this.userId = paramMap.get('userId') ?? '';
         this.userName =
-          this.userService.users.find((u) => u.id === this.userId)?.name || '';
+          this.userService.getUserById(this.userId)?.name ?? '';
       },
     });
     this.destroyRef.onDestroy(() => subscription.unsubscribe());
